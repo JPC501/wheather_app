@@ -1,0 +1,8 @@
+Tablero del Clima
+Vista Principal: Tendrías una sola página que muestra un formulario donde los usuarios pueden ingresar el nombre de una ciudad.
+
+Backend: Al recibir el nombre de la ciudad, harías una solicitud a una API de clima como la API de OpenWeather, obtendrías los datos climáticos y los prepararías para su presentación.
+
+Despliegue de Información: En la misma vista, mostrarías los resultados (temperatura, condiciones climáticas, etc.) debajo del formulario o en una sección separada de la página.
+
+Opcional: Podrías tener una lista desplegable o un cuadro de búsqueda que sugiere nombres de ciudades mientras el usuario escribe
