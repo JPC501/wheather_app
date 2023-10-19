@@ -1,5 +1,6 @@
 from flask import (
-    Blueprint, render_template, request
+    Blueprint, render_template, request,
+    flash, redirect, url_for
 )
 import requests
 import datetime
@@ -10,6 +11,7 @@ api_bp = Blueprint('w_api', __name__, url_prefix='/w_api')
 
 @api_bp.route('/search', methods=['GET', 'POST'])
 def search_city():
+    error = None
     if request.method == 'POST':
         city = request.form.get('city').capitalize()
 
@@ -20,8 +22,16 @@ def search_city():
         f'&appid={api_key}'
     ]
     api_url = ''.join(api_url_parts)
-    api_call = requests.get(api_url)
-    data = api_call.json()
+
+    try:
+        api_call = requests.get(api_url)
+        api_call.raise_for_status()
+        data = api_call.json()
+    except requests.HTTPError:
+        if api_call.status_code == 404:
+            error = 'City not found'
+            flash(error)
+            return redirect(url_for('index'))
 
     name_city = data['city']['name']
     date = data['list'][0]['dt']
