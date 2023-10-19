@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #eef2f5;
     margin: 0;
     padding: 0;
 }
@@ -9,3 +8,12 @@ header{
     width: 50%;
     margin-top: 150px;
 }
+
+.data{
+    text-align: center;
+}
+
+.container{
+    padding-bottom: 40px;
+}
+
