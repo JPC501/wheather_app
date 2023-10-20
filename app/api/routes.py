@@ -4,6 +4,7 @@ from flask import (
 )
 import requests
 import datetime
+from os import getenv
 
 
 api_bp = Blueprint('w_api', __name__, url_prefix='/w_api')
@@ -15,7 +16,7 @@ def search_city():
     if request.method == 'POST':
         city = request.form.get('city').capitalize()
 
-    api_key = '2a9882821859c518cce5e1e1be745c5d'
+    api_key = getenv('API_KEY')
     api_url_parts = [
         'http://api.openweathermap.org/data/2.5/forecast?',
         f'q={city}',
